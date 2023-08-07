@@ -26,7 +26,7 @@ class Sonarr(Client):
         api_key: str,
         base_path: str = "/api/",
         port: int = 8989,
-        request_timeout: int = 8,
+        request_timeout: int = 30,
         session: ClientSession = None,
         tls: bool = False,
         verify_ssl: bool = True,

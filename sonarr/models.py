@@ -56,11 +56,11 @@ class Season:
 
     number: int
     monitored: bool
-    downloaded: int = 0
-    episodes: int = 0
-    total_episodes: int = 0
-    progress: int = 0
-    diskspace: int = 0
+    downloaded: int
+    episodes: int
+    total_episodes: int
+    progress: int
+    diskspace: int
 
     @staticmethod
     def from_dict(data: dict):
@@ -76,7 +76,11 @@ class Season:
             progress=stats.get("percentOfEpisodes", 0),
             diskspace=stats.get("sizeOnDisk", 0),
         )
-
+    def to_dict(self):
+        return {
+            'seasonNumber': self.number,
+            'monitored': self.monitored
+        }
 
 @dataclass(frozen=True)
 class Series:

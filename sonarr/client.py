@@ -69,6 +69,7 @@ class Client:
             "User-Agent": self.user_agent,
             "Accept": "application/json, text/plain, */*",
             "X-Api-Key": self.api_key,
+            "Content-Type": "application/json"  # Added this line
         }
 
         if self._session is None:
@@ -80,7 +81,7 @@ class Client:
                 response = await self._session.request(
                     method,
                     url,
-                    data=data,
+                    json=data,  # Updated this line from 'data=data' to 'json=data'
                     params=params,
                     headers=headers,
                     ssl=self.verify_ssl,
